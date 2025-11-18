@@ -1,4 +1,6 @@
-﻿namespace ChatIARag.API.Data;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace ChatIARag.API.Data;
 
 public static class DependecyInjectionExtension
 {
