@@ -9,7 +9,7 @@ namespace ChatIARag.API.Config
         public void Configure(EntityTypeBuilder<Conversation> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(c => c.UserId).IsRequired().HasMaxLength(450);
+            builder.Property(c => c.UserId).IsRequired();
             builder.Property(c => c.CreatedAt).IsRequired();
 
             builder.HasOne<User>() // Um User
