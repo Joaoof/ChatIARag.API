@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ChatIARag.API.Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChatIARag.API.Data;
 
