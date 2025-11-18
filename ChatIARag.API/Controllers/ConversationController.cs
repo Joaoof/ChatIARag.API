@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ChatIARag.API.Controllers
+namespace ChatIARag.API.Controllers;
+
+public class ConversationController : Controller
 {
-    public class ConversationController : Controller
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
     }
 }
