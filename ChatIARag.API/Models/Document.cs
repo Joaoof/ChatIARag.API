@@ -8,10 +8,10 @@ public class Document
     public Guid Id { get; set; }
     [Key]
     [ForeignKey("Conversation")]
-    public string ConversationId { get; set; }
+    public Guid ConversationId { get; set; }
     public Conversation Conversation { get; set; }
-    public string FileName { get; set; }
-    public string Content { get; set; }
+    public string FileName { get; set; } = string.Empty;
+    public string Content { get; set; } = string.Empty;
     public float[] Embeddings { get; set; }
     public DateTime UploadedAt { get; set; }
 }
