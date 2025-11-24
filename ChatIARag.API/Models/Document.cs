@@ -12,6 +12,10 @@ public class Document
     public Conversation Conversation { get; set; }
     public string FileName { get; set; } = string.Empty;
     public string Content { get; set; } = string.Empty;
+    public string VectorId { get; set; }
+    public string FileType { get; set; }
+    public long FileSize { get; set; }
+    public int ChunkCount { get; set; }
     public float[] Embeddings { get; set; }
     public DateTime UploadedAt { get; set; }
 }
