@@ -8,12 +8,10 @@ namespace ChatIARag.API.Repositories;
 public class MessageRepository : IMessageRepository
 {
     private readonly ChatIARagDbContext _context;
-    private readonly IUnitOfWork _unitOfWork;
 
-    public MessageRepository(ChatIARagDbContext context, IUnitOfWork unitOfWork)
+    public MessageRepository(ChatIARagDbContext context)
     {
         _context = context;
-        _unitOfWork = unitOfWork;
     }
 
     public async Task CreateAsync(Message message)
@@ -21,7 +19,7 @@ public class MessageRepository : IMessageRepository
          await _context.Message.AddAsync(message);
     }
 
-    public async Task DeleteAsync(Guid messageId, Message message)
+    public async Task DeleteAsync(Guid messageId)
     {
        var msg = await _context.Message.FindAsync(messageId);
 
@@ -44,28 +42,16 @@ public class MessageRepository : IMessageRepository
 
     public async Task<Message?> GetByIdAsync(Guid id)
     {
-        var msg = await _context.Message.FirstOrDefaultAsync(m => m.Id == id);
-
-        if(msg != null)
-        {
-            return msg; 
-        }
-
-        return null;
+        return await _context.Message.FirstOrDefaultAsync(m => m.Id == id);
     }
 
     public async Task<Message?> UpdateAsync(Guid messageId, string content)
     {
-        var existingMessage = await _context.Message.FindAsync(messageId);
+        var message = await _context.Message.FindAsync(messageId);
 
-        if(existingMessage is null)
-        {
-            return null;
-        }
-        existingMessage.Content = content;
+        if (message is null) return null;
 
-       _context.Message.Update(existingMessage);
-
-        return existingMessage;
+        message.Content = content;
+        return message;
     }
 }

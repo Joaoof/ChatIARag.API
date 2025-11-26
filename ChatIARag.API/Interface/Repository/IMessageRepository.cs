@@ -9,5 +9,5 @@ public interface IMessageRepository
     Task<Message> GetByIdAsync(Guid id);
     Task CreateAsync(Message message);
     Task<Message?> UpdateAsync(Guid messageId, string content);
-    Task DeleteAsync(Guid messageId, Message message);
+    Task DeleteAsync(Guid messageId);
 }
