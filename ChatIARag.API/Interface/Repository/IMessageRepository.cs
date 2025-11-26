@@ -5,9 +5,9 @@ namespace ChatIARag.API.Interface.Repository;
 public interface IMessageRepository
 {
     Task<List<Message>> GetAllAsync();
-    Task<List<Message>> GetByConversationIdAsync(Guid conversationId)
+    Task<List<Message>> GetByConversationIdAsync(Guid conversationId);
     Task<Message> GetByIdAsync(Guid id);
     Task CreateAsync(Message message);
-    Task UpdateAsync(Message message);
-    Task DeleteAsync(Guid id);
+    Task<Message?> UpdateAsync(Guid messageId, string content);
+    Task DeleteAsync(Guid messageId, Message message);
 }
