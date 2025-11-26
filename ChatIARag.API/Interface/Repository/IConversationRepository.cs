@@ -6,7 +6,7 @@ namespace ChatIARag.API.Interface.Repository;
 public interface IConversationRepository
 {
     Task<List<Conversation>> GetAll();
-    Task<List<Conversation>> GetAllNoTracking();
+    Task<IEnumerable<Conversation>> GetAllNoTracking();
     Task<Conversation> GetByIdAsync(Guid id);
     Task<Conversation> DeleteAsync(Conversation entity);
     Task<List<Conversation>> GetAllByUserIdAsync(Guid userId);

@@ -23,8 +23,13 @@ public class UserRepository : IUserRepository
 
     public async Task<IEnumerable<User>> GetAllAsync()
     {
-        return await _context.User.ToListAsync();
+        var data = await _context.User
+            .AsNoTracking()
+            .ToListAsync();  // materializa
+
+        return data.AsEnumerable(); // comunica leitura
     }
+
 
     public async Task<User> GetByEmailAsync(string email)
     {

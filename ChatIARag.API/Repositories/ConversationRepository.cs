@@ -32,9 +32,11 @@ public class ConversationRepository : IConversationRepository
 
     }
 
-    public async Task<List<Conversation>> GetAllNoTracking()
+    public async Task<IEnumerable<Conversation>> GetAllNoTracking()
     {
-        return await _context.Conversation.AsNoTracking().ToListAsync();
+        var data = await _context.Conversation.AsNoTracking().ToListAsync();
+
+        return data.AsEnumerable();
     }
 
     public async Task<Conversation> GetByIdAsync(Guid id)
